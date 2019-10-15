@@ -1,0 +1,9 @@
+# github.com/gorilla/websocket v1.4.1
+github.com/gorilla/websocket
+# github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015091745-4a68294d742d
+github.com/laiye-ai/wulai-openapi-sdk-golang/services/common/errors
+github.com/laiye-ai/wulai-openapi-sdk-golang/services/common/log
+github.com/laiye-ai/wulai-openapi-sdk-golang/services/wulai
+github.com/laiye-ai/wulai-openapi-sdk-golang/services/common
+# github.com/shzy2012/common v0.0.0-20191014074349-c68c023b44f3
+github.com/shzy2012/common/tool
