@@ -22,8 +22,8 @@ func botMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
 		log.Infof("%s\n", err)
 		return
 	}
-
 	log.Infof("[机器人投递的消息]]=>%s\n", respBytes)
+
 	//将机器人回复的消息投递到前端
 	hub.botMsgQueue <- respBytes
 	w.Write([]byte("ok"))
@@ -37,7 +37,6 @@ func botMsgRoute(hub *Hub, w http.ResponseWriter, r *http.Request) {
 		log.Infof("%s\n", err)
 		return
 	}
-
 	log.Infof("[收到消息路由传递的消息]]=>%s\n", inBytes)
 
 	//处理收到的消息
