@@ -16,8 +16,6 @@ type Bot struct {
 
 // botMsgDelivery 消息投递 handles
 func botMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
-	//request log
-	log.Infof("[/]=>remote=>%s host=>%s   url=>%s   method=>%s\n", r.RemoteAddr, r.Host, r.URL, r.Method)
 
 	respBytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -33,8 +31,6 @@ func botMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
 
 // botMsgRoute 消息路由 handles
 func botMsgRoute(hub *Hub, w http.ResponseWriter, r *http.Request) {
-
-	log.Infof("[/]=>remote=>%s host=>%s   url=>%s   method=>%s\n", r.RemoteAddr, r.Host, r.URL, r.Method)
 
 	inBytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -65,6 +61,7 @@ func ServeBotMsg(hub *Hub, w http.ResponseWriter, r *http.Request) {
 
 	//request log
 	log.Infof("[/]=>remote=>%s host=>%s   url=>%s   method=>%s\n", r.RemoteAddr, r.Host, r.URL, r.Method)
+
 	url := strings.ToLower(r.URL.String())
 	switch {
 	case url == "/bot/message_delivery":
