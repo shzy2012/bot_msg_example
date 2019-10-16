@@ -30,7 +30,7 @@ func botMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
 }
 
 // botMsgRoute 消息路由 handles
-func botMsgRoute(hub *Hub, w http.ResponseWriter, r *http.Request) {
+func botMsgRoute(w http.ResponseWriter, r *http.Request) {
 
 	inBytes, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -66,7 +66,7 @@ func ServeBotMsg(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	case url == "/bot/message_delivery":
 		botMsgDelivery(hub, w, r)
 	case url == "/bot/message_route":
-		botMsgRoute(hub, w, r)
+		botMsgRoute(w, r)
 	default:
 		w.Write([]byte("Unknown Pattern"))
 	}
