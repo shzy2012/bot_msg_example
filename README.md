@@ -1,84 +1,12 @@
-## 消息投递API
+## 吾来Bot异步定制对话场景案例
 
-用于获取机器人推送的答案
+实现步骤
 
-获取机器人回复的案例：
-```json
-{
-    "user_id":"xiao_lai",
-    "msg_id":"632494952477343761",
-    "msg_ts":"1570868947857",
-    "sender_info":{
-        "real_name":"AI",
-        "avatar_url":"http://img.ps.laiye.com/cFaP7pdBo5rwDi0h1gRu2WwTGMnmKNbX.png"
-    },
-    "msg_body":{
-        "text":{
-            "content":"如果孕妇错过了唐氏筛查的时间段，则是无法补检，只能进行羊膜穿刺检查，通过抽羊水来做唐氏儿测定了。"
-        }
-    },
-    "source":"QA_BOT",
-    "bot":{
-        "qa":{
-            "knowledge_id":181917,
-            "standard_question":"错过唐筛检查怎么办",
-            "question":"您好!错过了早唐和中唐怎么办?"
-        }
-    },
-    "quick_reply":[
+1. 调用UserCreate接口，传入 user_id，创建用户
+2. 调用MsgReceive接口，将用户的问题发给吾来 
+3. 在消息路由中接受机器人返回的结果，并根据业务需要修改相应内容
+4. 吾来平台会回调消息投递接口，将最终回复发给用户
 
-    ],
-    "similar_response":[
-        {
-            "detail":{
-                "qa":{
-                    "knowledge_id":182048,
-                    "standard_question":"四维彩超什么时候做最好？"
-                }
-            },
-            "url":"/v1/t/9yDVRmeJYwQJAA",
-            "source":"QA_BOT"
-        },
-        {
-            "detail":{
-                "qa":{
-                    "knowledge_id":181913,
-                    "standard_question":"唐氏筛查什么时候做"
-                }
-            },
-            "url":"/v1/t/-wBSbXSWOEaQAQ",
-            "source":"QA_BOT"
-        },
-        {
-            "detail":{
-                "qa":{
-                    "knowledge_id":182029,
-                    "standard_question":"做B超检查前需要憋尿吗"
-                }
-            },
-            "url":"/v1/t/fQJItdFZ4hhBAg",
-            "source":"QA_BOT"
-        },
-        {
-            "detail":{
-                "qa":{
-                    "knowledge_id":181909,
-                    "standard_question":"唐氏筛查需要空腹吗"
-                }
-            },
-            "url":"/v1/t/PgSQaqOzxDGCAw",
-            "source":"QA_BOT"
-        },
-        {
-            "detail":{
-                "qa":{
-                    "knowledge_id":181920,
-                    "standard_question":"哪些因素会影响唐筛的结果"
-                }
-            },
-            "url":"/v1/t/n2eJYwQJINVGBA",
-            "source":"QA_BOT"
-        }
-    ]
-}
-```
+整体案例实现架构图:
+<img src="./static/async_talk.png" width="800" height="400">
+

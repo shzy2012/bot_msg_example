@@ -34,7 +34,7 @@ func main() {
 	flag.Parse()
 
 	//吾来平台 pubkey, secret
-	pubkey, secret := "84Mb38jJR6Bg7qB3MT09cSHPdrEImIgv00362b370af3cc02eb", "x9xBAnz8JHrI8GdsdVoJ" //os.Getenv("pubkey"), os.Getenv("secret")
+	pubkey, secret := "xxx", "xxx"
 	hub := service.NewHub(pubkey, secret)
 	go hub.Run()
 
