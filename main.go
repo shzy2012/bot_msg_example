@@ -1,13 +1,13 @@
 package main
 
 import (
+	"bot_msg_example/service"
 	"flag"
 	"log"
-	"bot_msg_example/service"
 	"net/http"
 )
 
-var addr = flag.String("addr", ":9006", "http service address")
+var addr = flag.String("addr", ":9010", "http service address")
 
 func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
@@ -44,14 +44,9 @@ func main() {
 		service.ServeWs(hub, w, r)
 	})
 
-	//设置消息投递
-	http.HandleFunc("/bot_msg_example", func(w http.ResponseWriter, r *http.Request) {
-		service.ServeMsgDelivery(hub, w, r)
-	})
-
-	//设置消息路由
-	http.HandleFunc("/message_route", func(w http.ResponseWriter, r *http.Request) {
-		service.ServeMsgRoute(hub, w, r)
+	//设置bot消息路由/消息投递
+	http.HandleFunc("/bot/", func(w http.ResponseWriter, r *http.Request) {
+		service.ServeBotMsg(hub, w, r)
 	})
 
 	//开启http服务

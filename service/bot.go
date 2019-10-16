@@ -4,13 +4,18 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/laiye-ai/wulai-openapi-sdk-golang/services/common/log"
 	"github.com/laiye-ai/wulai-openapi-sdk-golang/services/wulai"
 )
 
-// ServeMsgDelivery 消息投递 handles
-func ServeMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
+//Bot bot
+type Bot struct {
+}
+
+// botMsgDelivery 消息投递 handles
+func botMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	//request log
 	log.Infof("[/]=>remote=>%s host=>%s   url=>%s   method=>%s\n", r.RemoteAddr, r.Host, r.URL, r.Method)
 
@@ -21,15 +26,14 @@ func ServeMsgDelivery(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Infof("[机器人投递的消息]]=>%s\n", respBytes)
-	//将消息投递到前端
+	//将机器人回复的消息投递到前端
 	hub.botMsgQueue <- respBytes
-
 	w.Write([]byte("ok"))
 }
 
-// ServeMsgRoute 消息路由 handles
-func ServeMsgRoute(hub *Hub, w http.ResponseWriter, r *http.Request) {
-	//request log
+// botMsgRoute 消息路由 handles
+func botMsgRoute(hub *Hub, w http.ResponseWriter, r *http.Request) {
+
 	log.Infof("[/]=>remote=>%s host=>%s   url=>%s   method=>%s\n", r.RemoteAddr, r.Host, r.URL, r.Method)
 
 	inBytes, err := ioutil.ReadAll(r.Body)
@@ -54,4 +58,20 @@ func ServeMsgRoute(hub *Hub, w http.ResponseWriter, r *http.Request) {
 
 	log.Info("返回处理后的结果给机器人")
 	w.Write(outBytes)
+}
+
+//ServeBotMsg bot message handle
+func ServeBotMsg(hub *Hub, w http.ResponseWriter, r *http.Request) {
+
+	//request log
+	log.Infof("[/]=>remote=>%s host=>%s   url=>%s   method=>%s\n", r.RemoteAddr, r.Host, r.URL, r.Method)
+	url := strings.ToLower(r.URL.String())
+	switch {
+	case url == "/bot/message_delivery":
+		botMsgDelivery(hub, w, r)
+	case url == "/bot/message_route":
+		botMsgRoute(hub, w, r)
+	default:
+		w.Write([]byte("Unknown Pattern"))
+	}
 }

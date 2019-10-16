@@ -1,9 +1,5 @@
 github.com/gorilla/websocket v1.4.1 h1:q7AeDBpnBk8AogcD4DSag/Ukw/KV+YhzLj2bP5HvKCM=
 github.com/gorilla/websocket v1.4.1/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
-github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015070211-3b376378cf36 h1:759t1pIDm8PK44BvjkPxO4zjxHObifyKvNu2P5vIqVU=
-github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015070211-3b376378cf36/go.mod h1:gMm2iGZq5sqUHLi8hD8yJQHB8YbgA1OrkshQH3KWg8o=
-github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015075215-fcf4fe8044a1 h1:RXSbOUwkiGmWGoRgByfFUOOOdef60RdaVscQZkJ+RGE=
-github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015075215-fcf4fe8044a1/go.mod h1:gMm2iGZq5sqUHLi8hD8yJQHB8YbgA1OrkshQH3KWg8o=
 github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015091745-4a68294d742d h1:ExN9dvj8QVoBTDks+GN+wcbZagNLdFqyT4VVg7M/JDc=
 github.com/laiye-ai/wulai-openapi-sdk-golang v0.0.0-20191015091745-4a68294d742d/go.mod h1:gMm2iGZq5sqUHLi8hD8yJQHB8YbgA1OrkshQH3KWg8o=
 github.com/shzy2012/common v0.0.0-20191014074349-c68c023b44f3 h1:6d2r2zbJUmnLZ/jndH12OGiBSYwxk2n5D9I8agkPXHg=
